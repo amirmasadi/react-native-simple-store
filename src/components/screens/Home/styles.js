@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  body: {
+  body: bgLight => ({
     flex: 1,
-    backgroundColor: '#c1c1c1',
-  },
+    backgroundColor: bgLight,
+  }),
   text: {
     color: '#333',
   },

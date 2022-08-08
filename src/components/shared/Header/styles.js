@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
   },
   brand: textDark => ({
     fontSize: 22,
-    fontFamily: 'Playfair Display',
     color: textDark,
     padding: 0,
     marginLeft: 15,

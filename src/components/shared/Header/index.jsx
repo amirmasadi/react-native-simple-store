@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 
+import MyTextBold from '../MyTextBold';
+
 //styles
 import {styles} from './styles';
 
@@ -33,7 +35,7 @@ export default function index() {
         <TouchableOpacity>
           <SvgUri source={hamburgarIcon} fill={textDark} />
         </TouchableOpacity>
-        <Text style={styles.brand(textDark)}>.store</Text>
+        <MyTextBold style={styles.brand(textDark)}>.store</MyTextBold>
       </View>
       <TouchableOpacity>
         <Image source={avatarImg} style={styles.avatar} />
