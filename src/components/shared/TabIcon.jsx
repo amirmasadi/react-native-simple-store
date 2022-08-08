@@ -36,7 +36,7 @@ export default function TabIcon({route, focused}) {
     <>
       <SvgUri source={iconName} fill={color} />
       {focused && (
-        <MyTextMedium style={{color: '#000', fontSize: 10, marginTop: 4}}>
+        <MyTextMedium style={{color: textDark, fontSize: 10, marginTop: 4}}>
           {route.name}
         </MyTextMedium>
       )}
