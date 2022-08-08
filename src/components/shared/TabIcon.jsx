@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text} from 'react-native';
+
+import MyTextMedium from './MyTextMedium';
 
 // SVG Package
 import SvgUri from 'react-native-svg-uri';
@@ -31,5 +32,14 @@ export default function TabIcon({route, focused}) {
     color = !focused ? textGrey : textDark;
   }
 
-  return <SvgUri source={iconName} fill={color} />;
+  return (
+    <>
+      <SvgUri source={iconName} fill={color} />
+      {focused && (
+        <MyTextMedium style={{color: '#000', fontSize: 10, marginTop: 4}}>
+          {route.name}
+        </MyTextMedium>
+      )}
+    </>
+  );
 }
