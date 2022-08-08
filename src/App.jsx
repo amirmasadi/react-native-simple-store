@@ -1,15 +1,17 @@
 import React from 'react';
-import {Text} from 'react-native';
 
 //react navigation
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-//components
+//screens
 import Home from './components/screens/Home';
 import Search from './components/screens/Search';
 import Wishlist from './components/screens/Wishlist';
 import Cart from './components/screens/Cart';
+
+//components
+import Header from './components/shared/Header';
 
 //colors
 import {textDark, textGrey, textWhite} from './helpers/Constants';
@@ -21,6 +23,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+      <Header />
       <Tab.Navigator
         screenOptions={({route}) => ({
           headerShown: false,
