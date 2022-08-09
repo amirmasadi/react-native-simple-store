@@ -1,13 +1,18 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  container: {
+    position: 'relative',
+    marginHorizontal: 10,
+    // overflow: 'hidden',
+    paddingBottom: 15,
+  },
   carousel: {
     width: '100%',
     position: 'relative',
   },
   slide: {
-    // marginRight: 10,
-    padding: 10,
+    marginRight: 10,
   },
   titleWrapper: {
     position: 'absolute',
@@ -21,9 +26,6 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingVertical: 0,
     paddingHorizontal: 7,
-  },
-  container: {
-    position: 'relative',
   },
   indicatorsWrapper: {
     flexDirection: 'row-reverse',
