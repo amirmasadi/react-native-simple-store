@@ -5,7 +5,4 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: bgLight,
   }),
-  text: {
-    color: '#333',
-  },
 });
