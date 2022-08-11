@@ -3,7 +3,6 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    marginHorizontal: 10,
     // overflow: 'hidden',
     paddingBottom: 15,
   },

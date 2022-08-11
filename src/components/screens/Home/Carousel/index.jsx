@@ -3,16 +3,16 @@ import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 
 //components
-import MyTextBold from '../../shared/MyTextBold';
+import MyTextBold from '../../../shared/MyTextBold';
 
 //styles
 import {styles} from './styles';
 
 //images and icons
-import img1 from '../../../assets/images/carousel-img-1.png';
-import img2 from '../../../assets/images/carousel-img-2.png';
-import rightArrow from '../../../assets/icons/right-arrow.svg';
-import leftArrow from '../../../assets/icons/left-arrow.svg';
+import img1 from '../../../../assets/images/carousel-img-1.png';
+import img2 from '../../../../assets/images/carousel-img-2.png';
+import rightArrow from '../../../../assets/icons/right-arrow.svg';
+import leftArrow from '../../../../assets/icons/left-arrow.svg';
 
 export default function index() {
   const [CurrentXOffset, setCurrentXOffset] = useState(0);

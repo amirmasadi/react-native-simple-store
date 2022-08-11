@@ -8,8 +8,9 @@ import {styles} from './styles';
 import {bgLight} from '../../../helpers/Constants';
 
 //components
-import Carousel from '../../shared/Carousel';
-import LatestItems from '../../shared/LatestItems';
+import Carousel from './Carousel';
+import LatestItems from './LatestItems';
+import CategorySec from './CategorySec';
 
 //redux
 import {useDispatch} from 'react-redux';
@@ -29,9 +30,11 @@ export default function Home() {
       style={styles.body(bgLight)}
       contentContainerStyle={{
         paddingBottom: 90,
+        paddingHorizontal: 10,
       }}>
       <Carousel />
       <LatestItems />
+      <CategorySec />
     </ScrollView>
   );
 }

@@ -18,6 +18,7 @@ import {textDark} from '../../../helpers/Constants';
 import {useSelector, useDispatch} from 'react-redux';
 //actions
 import {LIKE_ITEM, DISLIKE_ITEM} from '../../../redux/actions/userAction';
+import {gridColsWidth} from '../../../helpers/functions';
 
 export default function ItemCard({itemInfo, isLiked}) {
   const dispatch = useDispatch();
@@ -31,10 +32,7 @@ export default function ItemCard({itemInfo, isLiked}) {
   const cols = 2;
   const marginHorizontal = 10;
   const marginVertical = 10;
-  const width =
-    Dimensions.get('window').width / cols - marginHorizontal * (cols + 1);
-  const height =
-    Dimensions.get('window').height / rows - marginVertical * (rows + 1);
+  const width = gridColsWidth(cols, marginHorizontal);
 
   return (
     <View style={styles.container(width, marginHorizontal)}>

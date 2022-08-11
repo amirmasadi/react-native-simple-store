@@ -3,13 +3,13 @@ import {View, Button} from 'react-native';
 import {useSelector} from 'react-redux';
 
 //components
-import MyTextBold from './MyTextBold';
-import MyTextMedium from './MyTextMedium';
-import ItemCard from './ItemCard';
+import MyTextBold from '../../shared/MyTextBold';
+import MyTextMedium from '../../shared/MyTextMedium';
+import ItemCard from '../../shared/ItemCard';
+import CustomBtn from '../../shared/CustomBtn';
 
 //colors
-import {textDark} from '../../helpers/Constants';
-import CustomBtn from './CustomBtn';
+import {textDark} from '../../../helpers/Constants';
 
 export default function LatestItems() {
   const items = useSelector(state => state.items);
@@ -20,7 +20,6 @@ export default function LatestItems() {
       {items.items.length > 0 && (
         <View
           style={{
-            marginHorizontal: 10,
             flex: 1,
             flexWrap: 'wrap',
             flexDirection: 'row',
