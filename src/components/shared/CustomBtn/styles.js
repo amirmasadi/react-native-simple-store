@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     opacity: pressed ? 0.3 : 1,
     paddingVertical: 5,
     paddingHorizontal: 20,
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
     marginVertical: 15,
   }),
 });

@@ -18,7 +18,7 @@ import {useDispatch} from 'react-redux';
 //actions
 import {getItems} from '../../../redux/actions/getItemsActions';
 
-export default function Home() {
+export default function Home({navigation}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function Home() {
         paddingHorizontal: 10,
       }}>
       <Carousel />
-      <LatestItems />
+      <LatestItems navigation={navigation} />
       <CategorySec />
     </ScrollView>
   );

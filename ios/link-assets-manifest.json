@@ -8,6 +8,10 @@
     {
       "path": "src/assets/fonts/Work Sans.ttf",
       "sha1": "b2fe9e6dbe05def653e8685c6b5c42a5dadf5c2e"
+    },
+    {
+      "path": "src/assets/fonts/WorkSans Bold.ttf",
+      "sha1": "849aad65d5415cd8573439219aea4fd22ba299b3"
     }
   ]
 }

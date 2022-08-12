@@ -5,6 +5,7 @@ import SvgUri from 'react-native-svg-uri';
 //components
 import MyTextBold from '../MyTextBold';
 import MyTextMedium from '../MyTextMedium';
+import CustomBorderLessBtn from '../CustomBorderLessBtn';
 
 //icons
 import heartOutline from '../../../assets/icons/heart-outline-icon.svg';
@@ -20,7 +21,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {LIKE_ITEM, DISLIKE_ITEM} from '../../../redux/actions/userAction';
 import {gridColsWidth} from '../../../helpers/functions';
 
-export default function ItemCard({itemInfo, isLiked}) {
+export default function ItemCard({itemInfo, navigation}) {
   const dispatch = useDispatch();
 
   const LikeHandler = item => {
@@ -51,7 +52,10 @@ export default function ItemCard({itemInfo, isLiked}) {
       <MyTextBold style={styles.title(textDark)}>
         {itemInfo.title.split(' ')[0] + itemInfo.title.split(' ')[1]}
       </MyTextBold>
-      <MyTextMedium style={styles.shop(textDark)}>SHOP NOW</MyTextMedium>
+      <CustomBorderLessBtn
+        title={'SHOP NOW'}
+        onPress={() => navigation.navigate('ProductDetails', itemInfo)}
+      />
     </View>
   );
 }

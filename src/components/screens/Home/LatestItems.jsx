@@ -11,7 +11,7 @@ import CustomBtn from '../../shared/CustomBtn';
 //colors
 import {textDark} from '../../../helpers/Constants';
 
-export default function LatestItems() {
+export default function LatestItems({navigation}) {
   const items = useSelector(state => state.items);
   const likes = useSelector(state => state.userInfo.likes);
 
@@ -27,15 +27,7 @@ export default function LatestItems() {
             justifyContent: 'center',
           }}>
           {items.items.slice(0, 4).map(itm => (
-            <ItemCard
-              key={itm.id}
-              itemInfo={itm}
-              isLiked={likes.filter(itm => {
-                if (likes.id === itm.id) {
-                  return true;
-                } else return false;
-              })}
-            />
+            <ItemCard key={itm.id} itemInfo={itm} navigation={navigation} />
           ))}
           <CustomBtn title="Check all latest" />
         </View>
