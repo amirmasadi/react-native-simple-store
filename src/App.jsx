@@ -11,6 +11,7 @@ import Search from './components/screens/Search';
 import Wishlist from './components/screens/Wishlist';
 import Cart from './components/screens/Cart';
 import ProductDetails from './components/screens/ProductDetails';
+import AllProducts from './components/screens/AllProducts';
 
 //components
 import Header from './components/shared/Header';
@@ -31,6 +32,7 @@ function HomeStack() {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="HomeNested" component={Home} />
       <Stack.Screen name="ProductDetails" component={ProductDetails} />
+      <Stack.Screen name="AllProducts" component={AllProducts} />
     </Stack.Navigator>
   );
 }

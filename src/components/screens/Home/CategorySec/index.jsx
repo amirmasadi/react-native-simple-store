@@ -32,7 +32,7 @@ export default function CategorySec() {
               <CategoryItemCard title={cat} key={cat} />
             ))}
           </View>
-          <CustomBtn title="Browse all categories" />
+          {/* <CustomBtn title="Browse all categories" /> */}
         </>
       )}
     </>
