@@ -146,13 +146,14 @@ export default function ProductDetails({route, navigation}) {
               <MyTextMediumBold
                 style={[
                   {
-                    color: '#000',
+                    color: '#727272',
                     fontSize: 14,
                   },
                   desc === itm.title && {
                     borderBottomWidth: 2,
                     paddingBottom: 5,
                     borderColor: '#000',
+                    color: '#000',
                   },
                 ]}>
                 {itm.title}
