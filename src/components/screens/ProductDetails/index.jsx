@@ -18,8 +18,13 @@ import heartFill from '../../../assets/icons/heart-fill-icon.svg';
 import SvgUri from 'react-native-svg-uri';
 
 //actions
-import {LIKE_ITEM} from '../../../redux/actions/userAction';
+import {
+  LIKE_ITEM,
+  ADD_TO_CART,
+  REMOVE_TO_CART,
+} from '../../../redux/actions/userAction';
 import {useDispatch} from 'react-redux';
+import QuantityRange from '../../shared/Quantityrange';
 
 export default function ProductDetails({route, navigation}) {
   const [desc, setDesc] = useState('Description');
@@ -30,6 +35,14 @@ export default function ProductDetails({route, navigation}) {
 
   const LikeHandler = item => {
     dispatch({type: LIKE_ITEM, payload: item});
+    setRelode(prevState => !prevState);
+  };
+  const addToCartHandler = item => {
+    dispatch({type: ADD_TO_CART, payload: item});
+    setRelode(prevState => !prevState);
+  };
+  const removeToCartHandler = item => {
+    dispatch({type: REMOVE_TO_CART, payload: item});
     setRelode(prevState => !prevState);
   };
 
@@ -141,7 +154,21 @@ export default function ProductDetails({route, navigation}) {
           <MyTextMediumBold style={styles.price}>
             ${itemInfo.price}
           </MyTextMediumBold>
-          <CustomBtn title={'Buy now'} outline={false} />
+          <View style={{marginVertical: 15}}>
+            {!itemInfo.quantity ? (
+              <CustomBtn
+                title={'Buy now'}
+                onPress={() => addToCartHandler(itemInfo)}
+                outline={false}
+              />
+            ) : (
+              <QuantityRange
+                value={itemInfo.quantity}
+                removeToCartHandler={() => removeToCartHandler(itemInfo)}
+                addToCartHandler={() => addToCartHandler(itemInfo)}
+              />
+            )}
+          </View>
           <CustomBorderLessBtn title={'Add to cart'} />
         </View>
       </View>

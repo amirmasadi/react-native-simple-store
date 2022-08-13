@@ -10,6 +10,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 20,
     alignSelf: 'flex-start',
-    marginVertical: 15,
+    // marginVertical: 15,
   }),
 });

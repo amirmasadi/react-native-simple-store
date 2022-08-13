@@ -5,12 +5,7 @@ import {
   GET_ITEMS_FAILURE,
 } from '../actions/getItemsActions';
 
-import {
-  LIKE_ITEM,
-  REMOVE_LIKE_ITEM,
-  ADD_TO_CART,
-  REMOVE_TO_CART,
-} from '../actions/userAction';
+import {LIKE_ITEM, ADD_TO_CART, REMOVE_TO_CART} from '../actions/userAction';
 
 const initialState = {
   items: [],
@@ -35,11 +30,21 @@ const getItemsReducer = (state = initialState, action) => {
       }
       return {...state};
     }
-    case ADD_TO_CART:
-      return {...state, inCart: [...state.inCart, action.payload]};
+    case ADD_TO_CART: {
+      let objIndex = state.items.findIndex(obj => obj.id === action.payload.id);
+      if (state.items[objIndex].quantity) {
+        state.items[objIndex].quantity += 1;
+      } else {
+        state.items[objIndex].quantity = 1;
+      }
+      return {...state};
+    }
     case REMOVE_TO_CART: {
-      let inCartItems = state.inCart.filter(itm => itm.id !== action.payload);
-      return {...state, inCart: [...inCartItems]};
+      let objIndex = state.items.findIndex(obj => obj.id === action.payload.id);
+      if (state.items[objIndex].quantity > 0) {
+        state.items[objIndex].quantity -= 1;
+      }
+      return {...state};
     }
     default:
       return state;

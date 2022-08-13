@@ -28,10 +28,12 @@ export default function LatestItems({navigation}) {
           {items.items.slice(0, 4).map(itm => (
             <ItemCard key={itm.id} itemInfo={itm} navigation={navigation} />
           ))}
-          <CustomBtn
-            title="Check all latest"
-            onPress={() => navigation.navigate('AllProducts', 'All')}
-          />
+          <View style={{marginTop: 16}}>
+            <CustomBtn
+              title="Check all latest"
+              onPress={() => navigation.navigate('AllProducts', 'All')}
+            />
+          </View>
         </View>
       )}
 
