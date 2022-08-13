@@ -46,6 +46,7 @@ export default function Search({navigation}) {
           ref={searchInputRef}
           placeholder={'Type here to search'}
           placeholderTextColor={'#00000076'}
+          autoFocus={true}
         />
       </View>
       <ScrollView
