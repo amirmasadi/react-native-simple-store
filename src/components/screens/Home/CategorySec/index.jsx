@@ -12,7 +12,7 @@ import {styles} from './styles';
 // redux
 import {useSelector} from 'react-redux';
 
-export default function CategorySec() {
+export default function CategorySec({navigation}) {
   //extracting categorys from array of items in store
   const category = useSelector(state =>
     Array.from(new Set(state.items.items.map(itm => itm.category))),
@@ -29,7 +29,7 @@ export default function CategorySec() {
               flexDirection: 'row',
             }}>
             {category.map(cat => (
-              <CategoryItemCard title={cat} key={cat} />
+              <CategoryItemCard title={cat} key={cat} navigation={navigation} />
             ))}
           </View>
           {/* <CustomBtn title="Browse all categories" /> */}

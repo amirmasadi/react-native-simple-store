@@ -24,7 +24,6 @@ export const styles = StyleSheet.create({
     right: 0,
     top: '20%',
     height: '100%',
-    width: '5%',
-    backgroundColor: '#fff',
+    width: '10%',
   },
 });

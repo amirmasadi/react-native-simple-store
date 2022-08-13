@@ -34,7 +34,7 @@ export default function Home({navigation}) {
       }}>
       <Carousel />
       <LatestItems navigation={navigation} />
-      <CategorySec />
+      <CategorySec navigation={navigation} />
     </ScrollView>
   );
 }

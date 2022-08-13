@@ -20,9 +20,11 @@ const cols = 2;
 const marginHorizontal = 10;
 const width = gridColsWidth(cols, marginHorizontal);
 
-const CategoryItemCard = ({title}) => {
+const CategoryItemCard = ({title, navigation}) => {
   return (
-    <TouchableOpacity style={styles.container(width, marginHorizontal)}>
+    <TouchableOpacity
+      style={styles.container(width, marginHorizontal)}
+      onPress={() => navigation.navigate('AllProducts', title)}>
       {title === "women's clothing" && (
         <Image
           source={womensClothingImg}

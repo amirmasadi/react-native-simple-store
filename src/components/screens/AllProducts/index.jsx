@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, ScrollView, TouchableOpacity} from 'react-native';
 
 //components
 import ItemCard from '../../shared/ItemCard';
 import MyTextBold from '../../shared/MyTextBold';
+
+import LinearGradient from 'react-native-linear-gradient';
 
 //redux
 import {useSelector} from 'react-redux';
@@ -13,7 +15,13 @@ import {styles} from './styles';
 import MyTextMedium from '../../shared/MyTextMedium';
 
 export default function AllProducts({route, navigation}) {
+  const [currentFilter, setCurrentFilter] = useState('');
+
   const filter = route.params;
+
+  useEffect(() => {
+    setCurrentFilter(filter);
+  }, []);
 
   //getting items from redux
   const items = useSelector(state => state.items.items);
@@ -39,19 +47,34 @@ export default function AllProducts({route, navigation}) {
           contentContainerStyle={{
             paddingRight: 30,
           }}>
-          <TouchableOpacity key={'All'}>
-            <MyTextMedium style={[styles.pill, styles.activePill]}>
+          <TouchableOpacity key={'All'} onPress={() => setCurrentFilter('All')}>
+            <MyTextMedium
+              style={[
+                styles.pill,
+                currentFilter === 'All' && styles.activePill,
+              ]}>
               All
             </MyTextMedium>
           </TouchableOpacity>
           {categorys.map(cat => (
-            <TouchableOpacity key={cat}>
-              <MyTextMedium style={styles.pill}>{cat}</MyTextMedium>
+            <TouchableOpacity key={cat} onPress={() => setCurrentFilter(cat)}>
+              <MyTextMedium
+                style={[
+                  styles.pill,
+                  currentFilter === cat && styles.activePill,
+                ]}>
+                {cat}
+              </MyTextMedium>
             </TouchableOpacity>
           ))}
         </ScrollView>
-        <View style={styles.catRowAfter}></View>
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          colors={['#FFFFFF00', '#f1f1f182', '#f1f1f1e1', '#F1F1F1']}
+          style={styles.catRowAfter}></LinearGradient>
       </View>
+
       <View
         style={{
           flex: 1,
@@ -60,9 +83,17 @@ export default function AllProducts({route, navigation}) {
           paddingTop: 20,
           justifyContent: 'center',
         }}>
-        {items.map(itm => (
-          <ItemCard key={itm.id} itemInfo={itm} navigation={navigation} />
-        ))}
+        {items.map(itm => {
+          if (itm.category === currentFilter) {
+            return (
+              <ItemCard key={itm.id} itemInfo={itm} navigation={navigation} />
+            );
+          } else if (currentFilter === 'All') {
+            return (
+              <ItemCard key={itm.id} itemInfo={itm} navigation={navigation} />
+            );
+          }
+        })}
       </View>
     </ScrollView>
   );
