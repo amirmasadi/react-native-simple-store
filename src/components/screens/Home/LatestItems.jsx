@@ -13,7 +13,6 @@ import {textDark} from '../../../helpers/Constants';
 
 export default function LatestItems({navigation}) {
   const items = useSelector(state => state.items);
-  const likes = useSelector(state => state.userInfo.likes);
 
   return (
     <>

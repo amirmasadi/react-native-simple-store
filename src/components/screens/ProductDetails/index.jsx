@@ -13,20 +13,24 @@ import {styles} from './styles.js';
 
 //icons
 import heartOutline from '../../../assets/icons/heart-outline-icon.svg';
+import heartFill from '../../../assets/icons/heart-fill-icon.svg';
+
 import SvgUri from 'react-native-svg-uri';
 
 //actions
-import {LIKE_ITEM, DISLIKE_ITEM} from '../../../redux/actions/userAction';
+import {LIKE_ITEM} from '../../../redux/actions/userAction';
 import {useDispatch} from 'react-redux';
 
 export default function ProductDetails({route, navigation}) {
   const [desc, setDesc] = useState('Description');
+  const [relode, setRelode] = useState(false);
   const itemInfo = route.params;
 
   const dispatch = useDispatch();
 
   const LikeHandler = item => {
     dispatch({type: LIKE_ITEM, payload: item});
+    setRelode(prevState => !prevState);
   };
 
   const descData = [
@@ -108,7 +112,11 @@ export default function ProductDetails({route, navigation}) {
         <TouchableOpacity
           style={styles.like}
           onPress={() => LikeHandler(itemInfo)}>
-          <SvgUri source={heartOutline} />
+          {itemInfo.isLiked ? (
+            <SvgUri source={heartFill} />
+          ) : (
+            <SvgUri source={heartOutline} />
+          )}
         </TouchableOpacity>
         <Image
           source={{

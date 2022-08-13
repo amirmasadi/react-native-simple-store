@@ -18,7 +18,7 @@ import {textDark} from '../../../helpers/Constants';
 // redux
 import {useSelector, useDispatch} from 'react-redux';
 //actions
-import {LIKE_ITEM, DISLIKE_ITEM} from '../../../redux/actions/userAction';
+import {LIKE_ITEM, REMOVE_LIKE_ITEM} from '../../../redux/actions/userAction';
 import {gridColsWidth} from '../../../helpers/functions';
 
 export default function ItemCard({itemInfo, navigation}) {
@@ -40,8 +40,13 @@ export default function ItemCard({itemInfo, navigation}) {
       <TouchableOpacity
         style={styles.like}
         onPress={() => LikeHandler(itemInfo)}>
-        <SvgUri source={heartOutline} />
+        {itemInfo.isLiked ? (
+          <SvgUri source={heartFill} />
+        ) : (
+          <SvgUri source={heartOutline} />
+        )}
       </TouchableOpacity>
+
       <Image
         source={{uri: itemInfo.image}}
         width={111}
