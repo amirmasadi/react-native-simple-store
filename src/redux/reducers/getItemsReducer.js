@@ -5,7 +5,7 @@ import {
   GET_ITEMS_FAILURE,
 } from '../actions/getItemsActions';
 
-import {LIKE_ITEM, ADD_TO_CART, REMOVE_TO_CART} from '../actions/userAction';
+import {LIKE_ITEM, ADD_TO_CART, REMOVE_FROM_CART} from '../actions/userAction';
 
 const initialState = {
   items: [],
@@ -39,7 +39,8 @@ const getItemsReducer = (state = initialState, action) => {
       }
       return {...state};
     }
-    case REMOVE_TO_CART: {
+    case REMOVE_FROM_CART: {
+      console.log(action.payload.id);
       let objIndex = state.items.findIndex(obj => obj.id === action.payload.id);
       if (state.items[objIndex].quantity > 0) {
         state.items[objIndex].quantity -= 1;
