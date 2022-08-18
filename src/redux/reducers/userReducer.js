@@ -15,7 +15,6 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LIKE_ITEM: {
       let newState = state.likes.filter(item => item.id !== action.payload.id);
-      console.log(state.likes.map(item => item.isLiked === true));
       return [...newState, {...action.payload, isLiked: true}];
     }
     case REMOVE_LIKE_ITEM: {

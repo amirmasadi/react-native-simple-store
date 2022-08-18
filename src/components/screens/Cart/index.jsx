@@ -1,11 +1,45 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
+
+//components
+import InCartItem from '../../shared/InCartItem/index.jsx';
+
+//styles
 import {styles} from './styles.js';
 
-export default function Cart() {
+//redux
+import {useSelector} from 'react-redux';
+import MyTextBold from '../../shared/MyTextBold.jsx';
+import CustomBtn from '../../shared/CustomBtn/index.js';
+
+export default function Cart({navigation}) {
+  const inCartItems = useSelector(state =>
+    state.items.items.filter(itm => itm.quantity),
+  );
+
   return (
-    <View style={styles.body}>
-      <Text style={styles.text}>Cart </Text>
-    </View>
+    <>
+      {inCartItems.length > 0 ? (
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={{paddingBottom: 90}}>
+          <MyTextBold style={{fontSize: 22, color: '#000', marginBottom: 20}}>
+            Cart
+          </MyTextBold>
+          {inCartItems.map(itm => (
+            <InCartItem itm={itm} key={itm.id} navigation={navigation} />
+          ))}
+          <View
+            style={{
+              marginVertical: 15,
+              alignSelf: 'center',
+            }}>
+            <CustomBtn title={'Proceed to buy'} outline={false} />
+          </View>
+        </ScrollView>
+      ) : (
+        <Text style={{color: '#000'}}>Cart is empty</Text>
+      )}
+    </>
   );
 }

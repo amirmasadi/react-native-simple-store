@@ -21,10 +21,10 @@ import SvgUri from 'react-native-svg-uri';
 import {
   LIKE_ITEM,
   ADD_TO_CART,
-  REMOVE_TO_CART,
+  REMOVE_FROM_CART,
 } from '../../../redux/actions/userAction';
 import {useDispatch} from 'react-redux';
-import QuantityRange from '../../shared/Quantityrange';
+import QuantityRange from '../../shared/QuantityRange';
 
 export default function ProductDetails({route, navigation}) {
   const [desc, setDesc] = useState('Description');
@@ -42,7 +42,7 @@ export default function ProductDetails({route, navigation}) {
     setRelode(prevState => !prevState);
   };
   const removeToCartHandler = item => {
-    dispatch({type: REMOVE_TO_CART, payload: item});
+    dispatch({type: REMOVE_FROM_CART, payload: item});
     setRelode(prevState => !prevState);
   };
 

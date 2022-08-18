@@ -40,7 +40,6 @@ const getItemsReducer = (state = initialState, action) => {
       return {...state};
     }
     case REMOVE_FROM_CART: {
-      console.log(action.payload.id);
       let objIndex = state.items.findIndex(obj => obj.id === action.payload.id);
       if (state.items[objIndex].quantity > 0) {
         state.items[objIndex].quantity -= 1;

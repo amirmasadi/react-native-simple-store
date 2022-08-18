@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  View,
-  ScrollView,
-  Image,
-  ToastAndroid,
-  TouchableOpacity,
-} from 'react-native';
+import {View, ScrollView, ToastAndroid} from 'react-native';
 
 //components
 import MyTextBold from '../../shared/MyTextBold.jsx';
 import MyTextMedium from '../../shared/MyTextMedium.jsx';
-import CustomBorderLessBtn from '../../shared/CustomBorderLessBtn';
 import CustomBtn from '../../shared/CustomBtn';
+import InCartItem from '../../shared/InCartItem/index.jsx';
 
 //styles
 import {styles} from './styles.js';
@@ -26,10 +20,6 @@ export default function Wishlist({navigation}) {
   );
 
   const dispatch = useDispatch();
-
-  const removeLikeHandler = item => {
-    dispatch({type: LIKE_ITEM, payload: item});
-  };
 
   const addAllToCart = () => {
     likedItems.forEach(liked => {
@@ -56,40 +46,12 @@ export default function Wishlist({navigation}) {
       {likedItems.length ? (
         <View>
           {likedItems.map(itm => (
-            <View style={styles.item} key={itm.id}>
-              <Image
-                source={{uri: itm.image}}
-                width={81}
-                height={81}
-                style={styles.img}
-                resizeMode="contain"
-              />
-              <View style={styles.detailes}>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('ProductDetails', itm)}>
-                  <MyTextBold style={{fontSize: 18, color: '#000'}}>
-                    {itm.title.split(' ').slice(0, 3).join(' ')}
-                  </MyTextBold>
-                  <MyTextMedium
-                    style={{
-                      fontSize: 14,
-                      marginVertical: 5,
-                    }}>
-                    {itm.title}
-                  </MyTextMedium>
-                </TouchableOpacity>
-                <MyTextMedium
-                  style={{fontSize: 12, color: '#848484', marginBottom: 10}}>
-                  {itm.category}
-                </MyTextMedium>
-                <View style={{alignSelf: 'flex-start'}}>
-                  <CustomBorderLessBtn
-                    title="REMOVE"
-                    onPress={() => removeLikeHandler(itm)}
-                  />
-                </View>
-              </View>
-            </View>
+            <InCartItem
+              itm={itm}
+              key={itm.id}
+              navigation={navigation}
+              wishlist
+            />
           ))}
           <View
             style={{
