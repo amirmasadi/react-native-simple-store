@@ -23,9 +23,6 @@ export default function Cart({navigation}) {
         <ScrollView
           style={styles.container}
           contentContainerStyle={{paddingBottom: 90}}>
-          <MyTextBold style={{fontSize: 22, color: '#000', marginBottom: 20}}>
-            Cart
-          </MyTextBold>
           {inCartItems.map(itm => (
             <InCartItem itm={itm} key={itm.id} navigation={navigation} />
           ))}

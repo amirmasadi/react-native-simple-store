@@ -49,7 +49,8 @@ function ButtonTabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
-        headerShown: false,
+        headerShown: true,
+        header: props => <Header {...props} />,
         tabBarShowLabel: false,
         tabBarBadgeStyle: {
           backgroundColor: textDark,
@@ -94,7 +95,6 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Header />
         <ButtonTabNavigator />
       </NavigationContainer>
     </Provider>

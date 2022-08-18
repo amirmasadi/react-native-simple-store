@@ -40,9 +40,6 @@ export default function Wishlist({navigation}) {
     <ScrollView
       style={styles.container}
       contentContainerStyle={{paddingBottom: 90}}>
-      <MyTextBold style={{fontSize: 22, color: '#000', marginBottom: 20}}>
-        Wishlist
-      </MyTextBold>
       {likedItems.length ? (
         <View>
           {likedItems.map(itm => (

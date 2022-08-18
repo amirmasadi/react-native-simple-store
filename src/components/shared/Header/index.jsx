@@ -21,7 +21,7 @@ import avatarImg from '../../../assets/images/avatar-img.png';
 //colors
 import {textDark, bgLight} from '../../../helpers/Constants';
 
-export default function index() {
+export default function index({route}) {
   return (
     <SafeAreaView
       style={styles.header(bgLight, StatusBar.currentHeight, textDark)}>
@@ -32,10 +32,9 @@ export default function index() {
         translucent={true}
       />
       <View style={styles.content}>
-        {/* <TouchableOpacity>
-          <SvgUri source={hamburgarIcon} fill={textDark} />
-        </TouchableOpacity> */}
-        <MyTextBold style={styles.brand(textDark)}>.store</MyTextBold>
+        <MyTextBold style={styles.brand(textDark)}>
+          {route.name === 'Home' ? '.Store' : route.name}
+        </MyTextBold>
       </View>
       <TouchableOpacity>
         <Image source={avatarImg} style={styles.avatar} />
