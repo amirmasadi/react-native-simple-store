@@ -38,9 +38,14 @@ function HomeStack() {
 }
 
 function ButtonTabNavigator() {
-  const inCartItems = useSelector(state =>
-    state.items.items.filter(itm => itm.quantity),
-  );
+  let inCartItems;
+  try {
+    inCartItems = useSelector(state =>
+      state.items.items.filter(itm => itm.quantity),
+    );
+  } catch (err) {
+    console.log(err);
+  }
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -79,7 +84,7 @@ function ButtonTabNavigator() {
       <Tab.Screen
         name="Cart"
         component={Cart}
-        options={inCartItems.length > 0 && {tabBarBadge: inCartItems.length}}
+        options={inCartItems?.length > 0 && {tabBarBadge: inCartItems.length}}
       />
     </Tab.Navigator>
   );

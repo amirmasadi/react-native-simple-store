@@ -32,9 +32,9 @@ export default function index() {
         translucent={true}
       />
       <View style={styles.content}>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <SvgUri source={hamburgarIcon} fill={textDark} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <MyTextBold style={styles.brand(textDark)}>.store</MyTextBold>
       </View>
       <TouchableOpacity>

@@ -1,4 +1,5 @@
 //actions
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   GET_ITEMS_LOADING,
   GET_ITEMS_SUCCESS,
@@ -11,6 +12,10 @@ const initialState = {
   items: [],
   error: '',
   loading: false,
+};
+
+const syncItems = async data => {
+  await AsyncStorage.setItem('storedItems', JSON.stringify(data));
 };
 
 const getItemsReducer = (state = initialState, action) => {
@@ -28,6 +33,7 @@ const getItemsReducer = (state = initialState, action) => {
       } else {
         state.items[objIndex].isLiked = true;
       }
+      syncItems(state.items);
       return {...state};
     }
     case ADD_TO_CART: {
@@ -37,6 +43,7 @@ const getItemsReducer = (state = initialState, action) => {
       } else {
         state.items[objIndex].quantity = 1;
       }
+      syncItems(state.items);
       return {...state};
     }
     case REMOVE_FROM_CART: {
@@ -44,6 +51,7 @@ const getItemsReducer = (state = initialState, action) => {
       if (state.items[objIndex].quantity > 0) {
         state.items[objIndex].quantity -= 1;
       }
+      syncItems(state.items);
       return {...state};
     }
     default:
