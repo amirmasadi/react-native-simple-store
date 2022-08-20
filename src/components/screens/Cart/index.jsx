@@ -3,14 +3,17 @@ import {View, Text, ScrollView} from 'react-native';
 
 //components
 import InCartItem from '../../shared/InCartItem/index.jsx';
+import EmptyOrError from '../../shared/EmptyOrError/index.jsx';
 
 //styles
 import {styles} from './styles.js';
 
 //redux
 import {useSelector} from 'react-redux';
-import MyTextBold from '../../shared/MyTextBold.jsx';
 import CustomBtn from '../../shared/CustomBtn/index.js';
+
+// assets
+import emptyImg from '../../../assets/images/empty.png';
 
 export default function Cart({navigation}) {
   const inCartItems = useSelector(state =>
@@ -35,7 +38,7 @@ export default function Cart({navigation}) {
           </View>
         </ScrollView>
       ) : (
-        <Text style={{color: '#000'}}>Cart is empty</Text>
+        <EmptyOrError title={'Your cart is empty...'} img={emptyImg} />
       )}
     </>
   );

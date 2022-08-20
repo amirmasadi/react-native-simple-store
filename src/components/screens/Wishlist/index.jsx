@@ -2,10 +2,9 @@ import React from 'react';
 import {View, ScrollView, ToastAndroid} from 'react-native';
 
 //components
-import MyTextBold from '../../shared/MyTextBold.jsx';
-import MyTextMedium from '../../shared/MyTextMedium.jsx';
 import CustomBtn from '../../shared/CustomBtn';
 import InCartItem from '../../shared/InCartItem/index.jsx';
+import EmptyOrError from '../../shared/EmptyOrError/index.jsx';
 
 //styles
 import {styles} from './styles.js';
@@ -13,6 +12,9 @@ import {styles} from './styles.js';
 //redux
 import {useDispatch, useSelector} from 'react-redux';
 import {ADD_TO_CART, LIKE_ITEM} from '../../../redux/actions/userAction';
+
+// assets
+import emptyImg from '../../../assets/images/empty.png';
 
 export default function Wishlist({navigation}) {
   const likedItems = useSelector(state =>
@@ -37,11 +39,14 @@ export default function Wishlist({navigation}) {
   };
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={{paddingBottom: 90}}>
+    <>
       {likedItems.length ? (
-        <View>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={[
+            {paddingBottom: 90},
+            !likedItems.length && {flex: 1},
+          ]}>
           {likedItems.map(itm => (
             <InCartItem
               itm={itm}
@@ -61,10 +66,10 @@ export default function Wishlist({navigation}) {
               onPress={addAllToCart}
             />
           </View>
-        </View>
+        </ScrollView>
       ) : (
-        <MyTextMedium>Empty...</MyTextMedium>
+        <EmptyOrError title={'Your wishlist is empty...'} img={emptyImg} />
       )}
-    </ScrollView>
+    </>
   );
 }

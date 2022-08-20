@@ -1,15 +1,18 @@
 import React from 'react';
-import {View, Button} from 'react-native';
+import {View} from 'react-native';
 import {useSelector} from 'react-redux';
 
 //components
 import MyTextBold from '../../shared/MyTextBold';
-import MyTextMedium from '../../shared/MyTextMedium';
 import ItemCard from '../../shared/ItemCard';
 import CustomBtn from '../../shared/CustomBtn';
+import EmptyOrError from '../../shared/EmptyOrError';
 
 //colors
 import {textDark} from '../../../helpers/Constants';
+
+// assets
+import offlineImg from '../../../assets/images/offline.png';
 
 export default function LatestItems({navigation}) {
   const items = useSelector(state => state.items);
@@ -38,9 +41,12 @@ export default function LatestItems({navigation}) {
       )}
 
       {items.error && (
-        <MyTextMedium style={{color: textDark, fontSize: 20}}>
-          {items.error}
-        </MyTextMedium>
+        <View
+          style={{
+            marginTop: 40,
+          }}>
+          <EmptyOrError title={items.error} img={offlineImg} />
+        </View>
       )}
 
       {items.loading && (

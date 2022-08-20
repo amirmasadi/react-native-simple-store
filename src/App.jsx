@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {View} from 'react-native';
+
+import NetInfo from '@react-native-community/netinfo';
 
 //react navigation
 import {NavigationContainer} from '@react-navigation/native';
@@ -16,13 +19,18 @@ import AllProducts from './components/screens/AllProducts';
 //components
 import Header from './components/shared/Header';
 import TabIcon from './components/shared/TabIcon';
+import EmptyOrError from './components/shared/EmptyOrError';
 
 //colors
-import {textDark, textWhite} from './helpers/Constants';
+import {bgLight, textDark, textWhite} from './helpers/Constants';
 
 //redux
 import store from './redux/store';
 import {Provider, useSelector} from 'react-redux';
+
+// assets
+import offlineImg from './assets/images/offline.png';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -92,10 +100,42 @@ function ButtonTabNavigator() {
 }
 
 export default function App() {
+  const [dataExist, setDataExist] = useState(true);
+  const [isConnected, setIsConnected] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      setIsConnected(state.isConnected);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  const isDataExist = async () => {
+    try {
+      const storedItems = await AsyncStorage.getItem('storedItems');
+      if (!isConnected && storedItems === null) {
+        setDataExist(false);
+      } else {
+        setDataExist(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  isDataExist();
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <ButtonTabNavigator />
+        {dataExist ? (
+          <ButtonTabNavigator />
+        ) : (
+          <View style={{flex: 1, backgroundColor: bgLight}}>
+            <EmptyOrError title={'Your are offline!'} img={offlineImg} />
+          </View>
+        )}
       </NavigationContainer>
     </Provider>
   );
