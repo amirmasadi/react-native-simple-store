@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
 //components
 import InCartItem from '../../shared/InCartItem/index.jsx';
@@ -10,7 +10,7 @@ import {styles} from './styles.js';
 
 //redux
 import {useSelector} from 'react-redux';
-import CustomBtn from '../../shared/CustomBtn/index.js';
+import CustomBtn from '../../shared/CustomBtn/index.jsx';
 
 // assets
 import emptyImg from '../../../assets/images/empty.png';

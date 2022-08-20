@@ -24,11 +24,9 @@ export default function InCartItem({itm, navigation, wishlist = false}) {
 
   const addToCartHandler = item => {
     dispatch({type: ADD_TO_CART, payload: item});
-    // setRelode(prevState => !prevState);
   };
   const removeToCartHandler = item => {
     dispatch({type: REMOVE_FROM_CART, payload: item});
-    // setRelode(prevState => !prevState);
   };
   const removeLikeHandler = item => {
     dispatch({type: LIKE_ITEM, payload: item});

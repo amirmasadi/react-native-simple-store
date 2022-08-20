@@ -1,13 +1,11 @@
 import React from 'react';
 import {
   SafeAreaView,
-  Text,
   TouchableOpacity,
   Image,
   View,
   StatusBar,
 } from 'react-native';
-import SvgUri from 'react-native-svg-uri';
 
 import MyTextBold from '../MyTextBold';
 
@@ -15,7 +13,6 @@ import MyTextBold from '../MyTextBold';
 import {styles} from './styles';
 
 //icons and images
-import hamburgarIcon from '../../../assets/icons/hamburgar-icon.svg';
 import avatarImg from '../../../assets/images/avatar-img.png';
 
 //colors

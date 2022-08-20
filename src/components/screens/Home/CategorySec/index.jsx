@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View} from 'react-native';
 
 // components
 import MyTextBold from '../../../shared/MyTextBold';
-import CustomBtn from '../../../shared/CustomBtn';
 import CategoryItemCard from '../../../shared/CategoryItemCard';
 
 // styles
@@ -32,7 +31,6 @@ export default function CategorySec({navigation}) {
               <CategoryItemCard title={cat} key={cat} navigation={navigation} />
             ))}
           </View>
-          {/* <CustomBtn title="Browse all categories" /> */}
         </>
       )}
     </>

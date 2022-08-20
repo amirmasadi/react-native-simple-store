@@ -1,10 +1,9 @@
 import React from 'react';
-import {View, Image, Dimensions, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 
 //components
 import MyTextBold from '../MyTextBold';
-import MyTextMedium from '../MyTextMedium';
 import CustomBorderLessBtn from '../CustomBorderLessBtn';
 
 //icons
@@ -16,9 +15,9 @@ import {styles} from './styles';
 import {textDark} from '../../../helpers/Constants';
 
 // redux
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 //actions
-import {LIKE_ITEM, REMOVE_LIKE_ITEM} from '../../../redux/actions/userAction';
+import {LIKE_ITEM} from '../../../redux/actions/userAction';
 import {gridColsWidth} from '../../../helpers/functions';
 
 export default function ItemCard({itemInfo, navigation}) {
@@ -29,10 +28,8 @@ export default function ItemCard({itemInfo, navigation}) {
   };
 
   //for implementing grid like behavior
-  const rows = 3;
   const cols = 2;
   const marginHorizontal = 10;
-  const marginVertical = 10;
   const width = gridColsWidth(cols, marginHorizontal);
 
   return (

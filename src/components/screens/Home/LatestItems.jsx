@@ -40,7 +40,7 @@ export default function LatestItems({navigation}) {
         </View>
       )}
 
-      {items.error && (
+      {items.error && items.items.length === 0 && (
         <View
           style={{
             marginTop: 40,

@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
+import {View, ScrollView, Image, TouchableOpacity} from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 
 //components

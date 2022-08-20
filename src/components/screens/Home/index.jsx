@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {ScrollView, Text, View, Button} from 'react-native';
+import {ScrollView} from 'react-native';
 
 //styles
 import {styles} from './styles';
