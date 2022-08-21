@@ -1,14 +1,13 @@
 import React from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
-import SvgUri from 'react-native-svg-uri';
 
 //components
 import MyTextBold from '../MyTextBold';
 import CustomBorderLessBtn from '../CustomBorderLessBtn';
 
 //icons
-import heartOutline from '../../../assets/icons/heart-outline-icon.svg';
-import heartFill from '../../../assets/icons/heart-fill-icon.svg';
+import HeartOutline from '../../../assets/icons/heart-outline-icon.svg';
+import HeartFill from '../../../assets/icons/heart-fill-icon.svg';
 
 //styles
 import {styles} from './styles';
@@ -37,11 +36,7 @@ export default function ItemCard({itemInfo, navigation}) {
       <TouchableOpacity
         style={styles.like}
         onPress={() => LikeHandler(itemInfo)}>
-        {itemInfo.isLiked ? (
-          <SvgUri source={heartFill} />
-        ) : (
-          <SvgUri source={heartOutline} />
-        )}
+        {itemInfo.isLiked ? <HeartFill /> : <HeartOutline />}
       </TouchableOpacity>
 
       <Image

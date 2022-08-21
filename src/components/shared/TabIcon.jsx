@@ -2,14 +2,11 @@ import React from 'react';
 
 import MyTextMedium from './MyTextMedium';
 
-// SVG Package
-import SvgUri from 'react-native-svg-uri';
-
 //svg icons
-import homeIcon from '../../assets/icons/home-icon.svg';
-import searchIcon from '../../assets/icons/search-icon.svg';
-import wishlistIcon from '../../assets/icons/wishlist-icon.svg';
-import cartIcon from '../../assets/icons/cart-icon.svg';
+import HomeIcon from '../../assets/icons/home-icon.svg';
+import SearchIcon from '../../assets/icons/search-icon.svg';
+import WishlistIcon from '../../assets/icons/wishlist-icon.svg';
+import CartIcon from '../../assets/icons/cart-icon.svg';
 
 //colors
 import {textDark, textGrey} from '../../helpers/Constants';
@@ -19,22 +16,22 @@ export default function TabIcon({route, focused}) {
   let color;
 
   if (route.name === 'Home') {
-    iconName = homeIcon;
+    iconName = <HomeIcon />;
     color = !focused ? textGrey : textDark;
   } else if (route.name === 'Search') {
-    iconName = searchIcon;
+    iconName = <SearchIcon />;
     color = !focused ? textGrey : textDark;
   } else if (route.name === 'Wishlist') {
-    iconName = wishlistIcon;
+    iconName = <WishlistIcon />;
     color = !focused ? textGrey : textDark;
   } else if (route.name === 'Cart') {
-    iconName = cartIcon;
+    iconName = <CartIcon fill={'pink'} />;
     color = !focused ? textGrey : textDark;
   }
 
   return (
     <>
-      <SvgUri source={iconName} fill={color} />
+      {iconName}
       {focused && (
         <MyTextMedium style={{color: textDark, fontSize: 10, marginTop: 4}}>
           {route.name}

@@ -1,6 +1,5 @@
 import React, {useState, useRef} from 'react';
 import {View, ScrollView, Image, TouchableOpacity} from 'react-native';
-import SvgUri from 'react-native-svg-uri';
 
 //components
 import MyTextBold from '../../../shared/MyTextBold';
@@ -11,8 +10,8 @@ import {styles} from './styles';
 //images and icons
 import img1 from '../../../../assets/images/carousel-img-1.png';
 import img2 from '../../../../assets/images/carousel-img-2.png';
-import rightArrow from '../../../../assets/icons/right-arrow.svg';
-import leftArrow from '../../../../assets/icons/left-arrow.svg';
+import RightArrow from '../../../../assets/icons/right-arrow.svg';
+import LeftArrow from '../../../../assets/icons/left-arrow.svg';
 
 export default function index() {
   const [CurrentXOffset, setCurrentXOffset] = useState(0);
@@ -67,10 +66,10 @@ export default function index() {
       </ScrollView>
       <View style={styles.indicatorsWrapper}>
         <TouchableOpacity style={styles.indicators} onPress={nextSlideHandler}>
-          <SvgUri source={rightArrow} />
+          <RightArrow />
         </TouchableOpacity>
         <TouchableOpacity style={styles.indicators} onPress={prevSlideHandler}>
-          <SvgUri source={leftArrow} />
+          <LeftArrow />
         </TouchableOpacity>
       </View>
     </View>

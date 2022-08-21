@@ -12,10 +12,8 @@ import CustomBorderLessBtn from '../../shared/CustomBorderLessBtn';
 import {styles} from './styles.js';
 
 //icons
-import heartOutline from '../../../assets/icons/heart-outline-icon.svg';
-import heartFill from '../../../assets/icons/heart-fill-icon.svg';
-
-import SvgUri from 'react-native-svg-uri';
+import HeartOutline from '../../../assets/icons/heart-outline-icon.svg';
+import HeartFill from '../../../assets/icons/heart-fill-icon.svg';
 
 //actions
 import {
@@ -125,11 +123,7 @@ export default function ProductDetails({route, navigation}) {
         <TouchableOpacity
           style={styles.like}
           onPress={() => LikeHandler(itemInfo)}>
-          {itemInfo.isLiked ? (
-            <SvgUri source={heartFill} />
-          ) : (
-            <SvgUri source={heartOutline} />
-          )}
+          {itemInfo.isLiked ? <HeartFill /> : <HeartOutline />}
         </TouchableOpacity>
         <Image
           source={{
@@ -169,7 +163,7 @@ export default function ProductDetails({route, navigation}) {
               />
             )}
           </View>
-          <CustomBorderLessBtn title={'Add to cart'} />
+          {/* <CustomBorderLessBtn title={'Add to cart'} /> */}
         </View>
       </View>
       <View style={styles.fullInfo}>
