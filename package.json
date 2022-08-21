@@ -9,7 +9,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "clean-gradle": "cd android && gradlew clean --warning-mode all "
+    "clean-gradle": "cd android && gradlew clean --warning-mode all",
+    "create-apk": "cd android && gradlew assembleRelease"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.9",
@@ -20,7 +21,6 @@
     "react": "18.0.0",
     "react-native": "0.69.3",
     "react-native-linear-gradient": "^2.6.2",
-    "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "^4.3.1",
     "react-native-screens": "^3.15.0",
     "react-native-splash-screen": "^3.3.0",
