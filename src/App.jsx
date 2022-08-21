@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 
+//for getting connection status
 import NetInfo from '@react-native-community/netinfo';
+
+//for splash screen
+import SplashScreen from 'react-native-splash-screen';
 
 //react navigation
 import {NavigationContainer} from '@react-navigation/native';
@@ -104,6 +108,8 @@ export default function App() {
   const [isConnected, setIsConnected] = useState(true);
 
   useEffect(() => {
+    SplashScreen.hide();
+
     const unsubscribe = NetInfo.addEventListener(state => {
       setIsConnected(state.isConnected);
     });
